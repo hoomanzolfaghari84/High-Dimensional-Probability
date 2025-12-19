@@ -1,0 +1,350 @@
+\documentclass[11pt]{article}
+
+% --------------------------
+% Packages
+% --------------------------
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{physics}
+\usepackage{xcolor}
+
+
+% --------------------------
+% Theorem Environments
+% --------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --------------------------
+% Custom Environment: Exercise + Solution
+% --------------------------
+\newtheorem{exercise}{Exercise}[section]
+
+% Subexercise counter, resets every exercise
+%\newcounter{subexcounter}
+%\renewcommand{\thesubexcounter}{\theexercise(\alph{subexcounter})}
+%
+%\newenvironment{subexercise}{
+%	\refstepcounter{subexcounter}
+%	\paragraph{Exercise \thesubexcounter.}}{}
+
+\newenvironment{solution}{\paragraph{Solution.}}{\hfill$\square$\medskip}
+
+% --------------------------
+% Custom Commands
+% --------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\normop}[1]{\left\lVert #1 \right\rVert_{\mathrm{op}}}
+\newcommand{\conv}{\text{conv}}
+
+
+
+
+
+% --------------------------
+% Document
+% --------------------------
+\begin{document}
+	
+	\begin{center}
+		{\Large \textbf{Solutions to Exercises from}}\\[2mm]
+		{\Large \textbf{\emph{High-Dimensional Probability}}}\\[2mm]
+		{\large Roman Vershynin}\\[4mm]
+		{\large Compiled by Hooman Zolfaghari}
+	\end{center}
+	
+\vspace{1cm}
+
+\tableofcontents
+\newpage
+
+% --------------------------
+% Example of a Chapter/Section
+% --------------------------
+\section{Chapter 0}
+\section{Chapter 1}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+\bigskip
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{solution}
+\[
+f(x) := \max_{i} f_i(x)\quad f_i \text{ are convex functions}
+\]
+
+\[
+f(\lambda x + (1-\lambda) y ) = \max_{i} f_i( \lambda x + (1-\lambda) y ) \leq 
+\]
+\[
+\max_{i} \lambda f_i(x) + (1-\lambda) f_i(y) \leq \max_{i} \lambda f_i(x) + \max_{i} (1-\lambda) f_i(y) =  \lambda  f(x) + (1- \lambda ) f(y)
+\]
+\end{solution}
+
+\bigskip
+
+\begin{exercise}
+
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+		\item induction on the definition
+		\item  definition of expected value for discrete random variable
+	\end{enumerate}
+\end{solution}
+
+
+\begin{exercise}
+	
+\end{exercise}
+\begin{solution}
+	
+We know \(T \subseteq \conv(T) \), therefore \(\sup_{x\in T} f(x) \leq \sup_{ x\in\conv(T) } f(x)\).\\
+Also we have for some \(\epsilon>0\) and \(S:= \sup_{ x\in\conv(T) } f(x)\) that \(\exists y \in \conv(T)\; f(y) > S - \epsilon \). Now \(y = \sum_{i=1}^{m} \lambda_i x_i\) for \(x_i \in T, \lambda \geq 0, \sum_{i=1}^{m}\lambda_i = 1\) which also means \(\lambda_i \leq 1\). By convexity of \(f\) and Jensen's inequality we have:
+\[
+f(y) \leq \sum_{i=1}^{m} \lambda_i f(x_i) \leq \max_{1\leq i\leq m} f(x_i) \leq \sup_{x\in T} f(x)
+\]
+So
+\[
+[\forall \epsilon>0 \quad S - \epsilon < f(y) \leq \sup_{x\in T} f(x) ]\implies \sup_{ x\in\conv(T) } f(x) \leq \sup_{x\in T} f(x)
+\]
+\end{solution}
+
+
+\begin{exercise}
+	
+\end{exercise}
+\begin{solution}
+
+case \(n=2\): \(x=(x_1, x_2)\), \(x_i \in [0,1]\):
+\[
+x = (1-x_2)(x_1(1,0)+ (1-x_1)(0,0)) + x_2 (x_1(1,1) + (1-x_1)(0,1))
+\]
+\[
+= (1-x_2)(x_1)(1,0) + (1-x_2)(1-x_2)(0,0) + x_2(x_1)(1,1) + x_2(1-x_1)(0,1)
+\]
+
+conjecture: For each $v = (v_1,\cdots,v_n) \in \{0,1\}^n$ define:
+\[
+\lambda_v := \prod_{i=1}^{n}[(v_i)(x_i)+(1-v_i)(1-x_i)]
+\]
+
+proof by induction: We can verify for \(n=1,2\) as above. Assume this works for \(n=k-1\), meaning any point in \([0,1]^{k-1}\) can be written as \(x= \sum_{v\in \{0,1\}^{k-1}} \lambda_v v\). We can prove now for \(n=k\) by taking a chosing one of its dimensions and letting a hyper-surface orthogonal to that point create a \(k-1\) dimensional cube. now we have \(\) 
+\end{solution}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{solution}
+	
+	We want to prove that with probability less than or equal to \(n\) there exists an independent group of size more than \(2 \log_2 n\). We have \(n \geq 7\), therefore \(\lfloor 2 \log_2 n \rfloor > 4\). So we have the size \(k \geq 5\).
+	
+	
+	
+	
+\end{solution}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{solution}
+	
+	\begin{enumerate}
+		\item An inequality that relates to different norms is Holder's inequality so we try to use that. We define \(r:= \frac{q}{p}\), where its conjugate is \(r' := 1/(1 - \frac{p}{q}) = \frac{q}{q-p}\). We take the \(r\)-norm of \(X^{p}\) and \(r'\)-norm of \(1\) to see: 
+		\[
+		 \|X^p\|_1 \leq \|X^p\|_r \|1\|_{r'} =  \|X^p\|_r
+		\]
+		\[
+		 \implies \E|X^p| \leq (\E|X|^{q})^{p/q} \implies answer
+		\]
+		\\
+		For \(0 \leq p < 1\) we should have used Jensen instead of Holder.
+		
+		\item Recall \( \|X\|_{Lp} = (\E |X|^p )^{1/p}\). For continuous \(X\) with distribution \(f\) we have  \(\E |X|^p = \int_D |x|^p f(x) \; dx\), where \(D\) is the domain of \(f\) (range of \(X\)). Take \(\alpha = \frac{p+q}{2}\). Now if we had \(f(x)=|x|^{-1-\alpha}\) then \(|x|^{p-1-\alpha}\) will converge (its exponent is \(\leq -1\)) and \(|x|^{q-1-\alpha}\) will diverge. But we need to make sure \(f\) is a valid density function, i.e. \( \int_D f(x)\; dx =1\). To make things simpler we take \(X \geq 1\) so we can remove the absolution value functions. Now we have \(int_{1}^\infty x^{-1-\alpha} = [x^{-\alpha}/-\alpha]_1^\infty = 1/\alpha\). So we must define \(f_X(x) := \alpha x^{-1-\alpha}\).
+		\\
+		Also for a discrete example we could create an infinite sum that converges diverges when its elements are gone to the powers more than \(p\) and converges otherwise.
+	\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{solution}
+	
+\end{solution}
+
+\section{Chapter 2}
+
+\begin{exercise}
+	(Products of i.i.d. random variables do not concentrate)
+	\[X_1,\cdots,X_n \in \text{Uniform}([0,1])\]
+	\[
+	Y_n := X_1 \cdots X_n
+	\]
+\end{exercise}
+
+\begin{solution}
+	Since \(X_i\) are independent:
+	\[
+	\E[Y_n] = \prod_{i=1}^{n} \E[X_i] = \prod_{i=1}^{n} \int_{0}^{1} x\;dx = 2^{-n}
+	\]
+	\[
+	\Prob[Y_n \geq \E Y_n] = \Prob[Y_n \geq 2^{-n}]  \geq \Prob(Y_1 \geq \frac12 \land \cdots \land Y_n \geq \frac{1}{2} ) = (0.5)^n
+	\]
+	We also have:
+	\[
+	\log Y_n = \sum_{i=1}^{n} \log X_i ,\quad \log X_i \in (-\infty, 0]
+	\]
+	\[
+	\Prob[Y_n \geq \E Y_n] = \Prob(\sum_{i=1}^{n} \log X_i \geq -n \log 2) \leq 
+	\]
+	???
+\end{solution}
+
+\begin{exercise}
+	(Gaussian tails: a lower bound)
+\end{exercise}
+
+\begin{solution}
+	
+	\[
+	\Prob(g \geq t) = \int_{t}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\; dx
+	, \quad \frac{d}{dt} \Prob(g \geq t) = - \frac{1}{\sqrt{2\pi}} e^{-t^2/2}
+	\]
+	\[
+	 \frac{d}{dt}  \frac{t}{t^2 + 1} \cdot \frac{1}{\sqrt{2\pi}} e^{-t^2/2}
+	= \frac{1}{\sqrt{2\pi}} \big( \frac{1 - 2t^2 - t^4}{(t^2 + 1)^2} \big)  e^{-t^2/2}
+	\]
+	
+defining \(h(t) := \Prob(g \geq t) - \frac{t}{t^2 + 1} \cdot \frac{1}{\sqrt{2\pi}} e^{-t^2/2}\) we can see that 
+\[
+\frac{d}{dt} h(t) = \frac{-2}{ (t^2+1)^2 \sqrt{2\pi}} e^{-t^2/2}
+\].
+We have \(h'(t) < 0 \) for all \(t\). and \(\lim_{t\to \infty} h'(t) = 0\). So the function \(h(t)\) is strictly decreasing. We can also verify that \(h(0) > 0\) and \(\lim_{t \to \infty} h(t) = 0\), so the function cannot become negative at any point \(t\).
+	
+\end{solution}
+
+\begin{exercise}
+	(Mills ratio) 
+\end{exercise}
+
+\begin{exercise}
+	(Truncated Gaussian moments)
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+		\item 
+		\[
+		\E[g \1_{g>t}] =  \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty x \1_{x>t} e^{-x^2/2}\; dx
+		=  \frac{1}{\sqrt{2\pi}} \int_{t}^\infty x e^{-x^2/2}\; dx =  \frac{1}{\sqrt{2\pi}} [-e^{-x^2/2} ]_{t}^\infty =  \frac{1}{\sqrt{2\pi}} e^{-t^2/2}
+		\]
+		
+		\item
+		\[
+		\E[g^2 \1_{g>t}] = \frac{1}{\sqrt{2\pi}} \int_{t}^\infty x^2 e^{-x^2/2}\; dx
+		\]
+		Integration by parts \(u:= x\) and \(v := e^{-x^2/2}\) gives:
+		\[
+		\leq \frac{1}{\sqrt{2\pi}} \big( te^{-t^2/2} +  \int_{t}^\infty e^{-x^2/2}\; dx \big) \leq \frac{1}{\sqrt{2\pi}} \big( te^{-t^2/2} + \frac{1}{t} e^{-t^2/2} \big) = \frac{1}{\sqrt{2\pi}} (t + \frac{1}{t}) e^{-t^2/2}
+		\]
+	\end{enumerate}
+\end{solution}
+
+
+\begin{exercise}
+	(Completing the proof of Hoeffding inequality)
+\end{exercise}
+\begin{solution}
+	Taylor expansion
+\end{solution}
+
+\begin{exercise}
+	(Gaussian tail by the exponential moment method)
+\end{exercise}
+
+\begin{solution}
+	for any \(t \geq 0\):
+	\[
+	\Prob(g \geq t) = \Prob(e^{\lambda g} \geq e^{\lambda t}) \leq e^{-\lambda t} \E[e^{\lambda g} ]
+	\]
+	\[
+	= e^{-\lambda t} \int_{-\infty}^{\infty} e^{\lambda x} \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\; dx = 
+	e^{-\lambda t} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{\frac{\lambda^2-(x-\lambda)^2}{2}}\; dx
+	\]
+	
+	\[
+	= e^{-\lambda t + \lambda^2/2} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{\frac{-(x-\lambda)^2}{2}}\; dx =  e^{-\lambda t + \lambda^2/2}
+	\]
+	
+	\[
+	\text{minimize by setting } \lambda = t \implies \Prob(g \geq t) \leq e^{-t^2/2}
+	\]
+	
+\end{solution}
+
+
+\begin{exercise}
+	(Small ball probability)
+\end{exercise}
+
+\begin{solution}
+	\[
+	\Prob(\sum_{i=1}^{N} X_i \leq \epsilon N ) = \Prob( e^{\lambda \sum_{i=1}^{N} X_i} \leq e^{\lambda \epsilon N} ) \leq e^{-\lambda \epsilon N} \prod_{i=1}^{N} \E[ e^{\lambda X_i} ] = e^{-\lambda \epsilon N} \prod_{i=1}^{N}
+	\]
+\end{solution}
+
+\end{document}
