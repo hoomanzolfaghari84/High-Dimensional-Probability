@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2024.5.4)  19 DEC 2025 19:44
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2024.5.4)  2 NOV 2026 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./Solutions.tex
-(Solutions.tex
+**./solutions.tex
+(solutions.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\Asus\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -382,35 +382,35 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 )
 \c@theorem=\count296
 \c@exercise=\count297
-(Solutions.aux)
-\openout1 = `Solutions.aux'.
+(solutions.aux)
+\openout1 = `solutions.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 6
-5.
+6.
 
 (C:\Users\Asus\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 (C:\Users\Asus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
@@ -464,32 +464,40 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 65.
-(Solutions.out) (Solutions.out)
+Package hyperref Info: Link coloring OFF on input line 66.
+(solutions.out) (solutions.out)
 \@outlinefile=\write3
-\openout3 = `Solutions.out'.
+\openout3 = `solutions.out'.
 
- (Solutions.toc)
+ (solutions.toc)
 \tf@toc=\write4
-\openout4 = `Solutions.toc'.
+\openout4 = `solutions.toc'.
 
  [1
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 91.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 
 
 (C:\Users\Asus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 91.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 
 
 (C:\Users\Asus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [2]
-Overfull \hbox (21.2375pt too wide) in paragraph at lines 214--217
+Overfull \hbox (1.6173pt too wide) in paragraph at lines 178--179
+ []\TU/lmr/bx/n/10.95 Solution.[] \TU/lmr/m/n/10.95 Similar to the Maurey metho
+d. We can assume random variables $\OML/cmm/m/it/10.95 ^^[[]$ \TU/lmr/m/n/10.95
+ such that $\OML/cmm/m/it/10.95 p[]\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^@\
+OT1/cmr/m/n/10.95 1) =
+ []
+
+[3] [4]
+Overfull \hbox (21.2375pt too wide) in paragraph at lines 321--324
 []\TU/lmr/m/n/10.95 Recall $\OMS/cmsy/m/n/10.95 k\OML/cmm/m/it/10.95 X\OMS/cmsy
 /m/n/10.95 k[] \OT1/cmr/m/n/10.95 = (\U/msb/m/n/10.95 E\OMS/cmsy/m/n/10.95 j\OM
 L/cmm/m/it/10.95 X\OMS/cmsy/m/n/10.95 j[]\OT1/cmr/m/n/10.95 )[]$\TU/lmr/m/n/10.
@@ -501,8 +509,8 @@ L/cmm/m/it/10.95 X\OMS/cmsy/m/n/10.95 j[]\OT1/cmr/m/n/10.95 )[]$\TU/lmr/m/n/10.
 mm/m/it/10.95 dx$\TU/lmr/m/n/10.95 ,
  []
 
-[3]
-Overfull \hbox (3.6175pt too wide) detected at line 294
+[5]
+Overfull \hbox (3.6175pt too wide) detected at line 401
 \U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 g\OT1/cmr/bx/n/10.95 
 1[]\OT1/cmr/m/n/10.95 ] = [] [][] \OML/cmm/m/it/10.95 x\OT1/cmr/bx/n/10.95 1[]\
 OML/cmm/m/it/10.95 e[] dx \OT1/cmr/m/n/10.95 = [] [][] \OML/cmm/m/it/10.95 xe[]
@@ -510,21 +518,39 @@ OML/cmm/m/it/10.95 e[] dx \OT1/cmr/m/n/10.95 = [] [][] \OML/cmm/m/it/10.95 xe[]
 cmr/m/n/10.95 ][] = []\OML/cmm/m/it/10.95 e[]
  []
 
-[4] [5] (Solutions.aux)
+
+Overfull \hbox (27.91774pt too wide) detected at line 455
+\U/msb/m/n/10.95 P\OT1/cmr/m/n/10.95 ([] \OML/cmm/m/it/10.95 X[] \OMS/cmsy/m/n/
+10.95 ^^T \OML/cmm/m/it/10.95 ^^ON\OT1/cmr/m/n/10.95 ) = [][] \OML/cmm/m/it/10.
+95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]; []  ; x[]\OT1/cmr/m/n/10.95 ) 
+\OML/cmm/m/it/10.95 dx \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 f\OT1/cmr/
+m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 ) [] \OML/cmm/m/it/10.95 f
+\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 ) \OML/cmm/m/it/1
+0.95 dx \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 K[] [][] \OT1/cmr/m/n/10.95
+ 1 \OML/cmm/m/it/10.95 dx
+ []
+
+[6] [7] [8]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 657.
+
+[9] [10] [11] [12] [13] (solutions.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-Package rerunfilecheck Info: File `Solutions.out' has not changed.
-(rerunfilecheck)             Checksum: CC9C8E7A5C2B928F689A7E4A68ABE4F5;273.
+Package rerunfilecheck Info: File `solutions.out' has not changed.
+(rerunfilecheck)             Checksum: D9A07D5C9F30BFAD34E35AC48C92C5F8;612.
  ) 
 Here is how much of TeX's memory you used:
- 13695 strings out of 409616
- 218294 string characters out of 5774196
- 1931191 words of memory out of 5000000
- 35646 multiletter control sequences out of 15000+600000
+ 13701 strings out of 409616
+ 218386 string characters out of 5774196
+ 1933191 words of memory out of 5000000
+ 35652 multiletter control sequences out of 15000+600000
  564078 words of font info for 67 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,6n,93p,765b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,9n,93p,765b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Solutions.pdf (5 pages).
+Output written on solutions.pdf (13 pages).

@@ -54,8 +54,9 @@
 \newcommand{\1}{\mathbf{1}}
 \newcommand{\normop}[1]{\left\lVert #1 \right\rVert_{\mathrm{op}}}
 \newcommand{\conv}{\text{conv}}
-
-
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\subg}{{\psi_2}}
+\newcommand{\sube}{{\psi_1}}
 
 
 
@@ -79,8 +80,118 @@
 % --------------------------
 % Example of a Chapter/Section
 % --------------------------
-\section{Chapter 0}
-\section{Chapter 1}
+\section*{Appetizer: Using Probability to Cover a Set}
+
+\begin{exercise}
+	(Two variance formulas)
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+		\item 
+		\[
+		\E \| Z - \E Z \|_2^2 = \E \sum_{i=1}^{n}( Z_i - \E Z_i )^2 
+		=  \sum_{i=1}^{n} \E ( Z_i - \E Z_i )^2 = \sum_{i=1}^{n} \E Z_i^2 - (\E Z_i)^2
+		\]
+		\[
+		= \E \sum_{i=1}^{n} Z_i^2 - \sum_{i=1}^{n}  (\E Z_i)^2 = \E \|Z\|_2^2 - \| \E Z \|_2^2 
+		\]
+		
+		Other way:
+		
+		\[
+		\E \|Z-\E Z\|_2^2 = \E (Z-\E Z)^\top (Z-\E Z) = \E Z^\top Z - \E( Z^\top \E Z )- \E ((\E Z)^\top Z) +\E (\E Z)^\top (\E Z)
+		\]
+		\[
+		= \E\|Z\|_2^2 - 2 (\E Z)^\top (\E Z) + (\E Z)^\top (\E Z) = \E \|Z\|_2^2 - \| \E Z \|_2^2 
+		\]
+		
+		\item 
+		
+		\[
+		\E\|Z - \E Z\|_2^2 = \sum_{i=1}^{n} \E (Z_i - \E Z_i )^2 
+		=  \sum_{i=1}^{n} \E Z_i^2 - (\E Z_i)^2 = \frac{1}{2} \sum_{i=1}^{n} 2\E Z_i^2 - 2(\E Z_i)^2 
+		\]
+		\[
+		= \frac{1}{2} \sum_{i=1}^{n} \E Z_i^2 + \E (Z_i')^2 - 2(\E Z_i)(\E Z_i')
+		\]
+		 \[
+		 =  \frac{1}{2} \sum_{i=1}^{n} \E Z_i^2 + \E (Z_i')^2 - 2(\E Z_i Z_i') \quad \text{from independence}
+		 \]
+		 \[
+		 = \frac{1}{2} \sum_{i=1}^{n} \E( Z_i^2 + (Z_i')^2 - 2Z_i Z_i') =  \frac{1}{2} \sum_{i=1}^{n} \E (Z_i - Z_i')^2 = 
+		 \frac{1}{2} \E\| Z - Z' \|_2^2
+		 \]
+		
+	\end{enumerate}
+	
+\end{solution}
+
+\begin{exercise}
+	
+	(Expectation minimizes the mean squared error)
+	The question has a typo and it should say:
+	\[
+	\Var(X) = \min_{a\in\R}\E(X-a)^2
+	\]
+	
+\end{exercise}
+
+\begin{solution}
+	First lets check the scalar version:
+	\[
+	\min_{a\in\R}\E(X-a)^2 = \min_{a\in\R} \E X^2 - 2a \E X + a^2 = \min_{a\in\R} \Var(X) + ((\E X) - a )^2 = \Var(X)
+	\]
+	
+	Now lets prove the euclidean vector version:
+	\[
+	\min_{a\in\R^n} \E\|Z - a\|_2^2 = \min_{a\in\R^n} \E \|Z\|_2^2 - 2 \langle \E Z, a \rangle + \|a\|_2^2
+	\]
+	\[
+	= \min_{a\in\R^n} \E\|Z-\E Z\|_2^2 + \|\E Z\|_2^2 - 2 \langle \E Z, a \rangle + \|a\|_2^2 \quad \text{from Exercise }0.1
+	\]
+
+\end{solution}
+
+\begin{exercise}
+	(Variance of a sum) 
+\end{exercise}
+
+\begin{solution}
+	
+	
+	\[
+	\E\|\sum_{j=1}^{k} Z_j\|_2^2 = \E\sum_{i,j=1}^{k} Z_i^\top Z_j = \E(\sum_{j=1}^{k} \|Z_j\|_2^2 + \sum_{i\ne j} Z_i^\top Z_j) = \sum_{j=1}^{k} \E\|Z_j\|_2^2 + \sum_{i\ne j} \E Z_i^\top Z_j
+	\]
+	
+	where \(Z_i^\top Z_j\) is also a linear combination so:
+	\[
+	\E Z_i^\top Z_j = (\E Z_i)^\top \E Z_j = 0^\top0 = 0
+	\]
+\end{solution}
+
+\begin{exercise}
+	(Balancing vectors)
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+	\item 
+	Similar to the Maurey method. We can assume random variables \(\sigma_i\) such that \(p_{\sigma_i}(-1) = p_{\sigma_i}(1) = 0.5\). And now we just prove that the expected value is less than the radius. Using the last exercise:
+	\[
+	 	\E \| \sum_{i=1}^{n} \sigma_ix_i \|_2^2 =  \sum_{i=1}^{n} \E \| \sigma_ix_i \|_2^2
+	 	= \sum_{i=1}^{n} \E \| x_i \|_2^2 \le n
+	\]
+	\[
+	\implies \exists \sigma_i \quad \| \sum_{i=1}^{n} \sigma_ix_i \|_2^2 \le n
+	\]
+	\item For example for \(x_1 = (0,1),\; x_2 = (1,0) \in \R^2\), we have \(\|x_1+x_2\|=\|x_1 - x_2\| = \sqrt{2}\). So any choice of \(\pm\) does not change the radius.
+	\end{enumerate}
+	
+	
+\end{solution}
+
+\section{A Quick Refresher on Analysis and Probability}
 
 \begin{exercise}
 	
@@ -124,7 +235,7 @@ f(\lambda x + (1-\lambda) y ) = \max_{i} f_i( \lambda x + (1-\lambda) y ) \leq
 
 
 \begin{exercise}
-	
+
 \end{exercise}
 \begin{solution}
 	
@@ -226,7 +337,7 @@ proof by induction: We can verify for \(n=1,2\) as above. Assume this works for 
 	
 \end{solution}
 
-\section{Chapter 2}
+\section{Concentration of Sums of Independent Random Variables}
 
 \begin{exercise}
 	(Products of i.i.d. random variables do not concentrate)
@@ -296,7 +407,7 @@ We have \(h'(t) < 0 \) for all \(t\). and \(\lim_{t\to \infty} h'(t) = 0\). So t
 		\item
 		\[
 		\E[g^2 \1_{g>t}] = \frac{1}{\sqrt{2\pi}} \int_{t}^\infty x^2 e^{-x^2/2}\; dx
-		\]
+vol		\]
 		Integration by parts \(u:= x\) and \(v := e^{-x^2/2}\) gives:
 		\[
 		\leq \frac{1}{\sqrt{2\pi}} \big( te^{-t^2/2} +  \int_{t}^\infty e^{-x^2/2}\; dx \big) \leq \frac{1}{\sqrt{2\pi}} \big( te^{-t^2/2} + \frac{1}{t} e^{-t^2/2} \big) = \frac{1}{\sqrt{2\pi}} (t + \frac{1}{t}) e^{-t^2/2}
@@ -342,9 +453,492 @@ We have \(h'(t) < 0 \) for all \(t\). and \(\lim_{t\to \infty} h'(t) = 0\). So t
 \end{exercise}
 
 \begin{solution}
+	
+	\[
+	\Prob(\sum_{i=1}^{N} X_i \leq \epsilon N) = \int_{\sum_{i=1}^{N} x_i \leq \epsilon N} f(x_1, \cdots, x_N) \;dx = \int_{\sum_{i=1}^{N} x_i \leq \epsilon N} f(x_1) \cdots f(x_N) \;dx \leq K^N \int_{\sum_{i=1}^{N} x_i \leq \epsilon N} 1 \;dx
+	\]
+	So, we need the volume of a simplex \(C := \{\sum_{i=1}^{N} x_i \leq \epsilon N \mid 0 \leq x_i\}\). Using the transform \(T(x_1,\cdots,x_N):=\epsilon N \cdot (x_1,\cdots, x_N)\) we have that \(\Vol(C) = \epsilon^NN^N \Vol( \{\sum_{i=1}^{N} x_i \leq 1 \mid 0 \leq x_i\} )\). 
+	\[
+	\Vol(C) = \epsilon^NN^N 
+	\]
+	
+	\bigskip
+	
+	attempt for a more typical argument:
 	\[
 	\Prob(\sum_{i=1}^{N} X_i \leq \epsilon N ) = \Prob( e^{\lambda \sum_{i=1}^{N} X_i} \leq e^{\lambda \epsilon N} ) \leq e^{-\lambda \epsilon N} \prod_{i=1}^{N} \E[ e^{\lambda X_i} ] = e^{-\lambda \epsilon N} \prod_{i=1}^{N}
 	\]
+\end{solution}
+
+\begin{exercise}
+	(An MGF comparison inequality)
+\end{exercise}
+
+\begin{solution}
+	
+	We have:
+	\[
+	\int_\mathcal{X} x f_X(x)\; dx = pa + (1-p)b := m
+	\], where \(p\) is the probability of \(Y=a\).
+	\[
+	\implies p = \frac{b-m}{b-a}
+	\]
+	We should utilize the convexity of the \(e^{\lambda x}\) function. So, a line intersecting it at \(x=a\) and \(x=b\) lies above the function for all \(x\in(a,b)\):
+	
+	\[
+	e^{\lambda x} \leq \frac{b-x}{b-a} e^{\lambda a} + \frac{x-a}{b-a} e^{\lambda b} \quad \forall x\in [a,b]
+	\]
+	\[
+	\implies \E e^{\lambda X} \leq \frac{b-\E X}{b-a} e^{\lambda a} + \frac{(\E X)-a}{b-a} e^{\lambda b} = \frac{b-m}{b-a} e^{\lambda a} + \frac{m -a}{b-a} e^{\lambda b} = p e^{\lambda a} + (1-p)e^{\lambda b} = \E e^{\lambda Y}
+	\]
+	
+	
+%	\[
+%	e^{pa+(1-p)b} \leq p e^{a} + (1-p) e^{b}, \quad e^{\E\lambda x} \leq \E e^{\lambda x}
+%	\]
+%	, while we have:
+%	\[
+%	\int_\mathcal{X} x f_X(x)\; dx := m = pa + (1-p)b
+%	\]
+%	and 
+%	\[
+%	 \E e^{\lambda Y} \geq e^{\lambda m} \text{ and } \E e^\lambda
+%	\]
+%	
+
+\end{solution}
+	
+	
+\begin{exercise}
+	(Hoeffding lemma)
+\end{exercise}	
+\begin{solution}
+	\begin{enumerate}
+		\item 
+		For a r.v. \(X\) we have the random variable \(Z := X - \E X  \in [a',b']\), where \(a' = a - \E X\) and \(b' = b - \E X\). Now \(b'-a' = b - a\) and we only need to prove the lemma for \(Z\) while \(\E Z = 0\).
+		
+		For any \(C = b - a > 0\) we can define \(Z := \frac{X}{C} \) and so \(Z \in [a', b']\) with \(b'-a' = 1\). Now if the lemma holds for \(Z\) then we have:
+		 \[
+		 \E e^{\lambda(Z - \E Z)} \leq \exp( \lambda^2 (b' - a')^2 / 8) \implies
+		 \E e^{\frac{\lambda}{C}(X - \E X)} \leq \exp( \frac{\lambda^2}{C^2} (b - a)^2 / 8)
+		 \],
+		 which holds for all \(\lambda' := \lambda/C \in \R\).
+		 
+		 Now assuming \(X\) and \(Z\) both have zero mean and \(b-a = 1\),  we know from last exercise:
+		 \[
+		 \E e^{\lambda X} \leq \E e^{\lambda Z}
+		 \]
+		 and if the result holds for \(Z\) then \(\E e^{\lambda Z} \leq \exp( \lambda^2 (b - a)^2 / 8) \). The RHS does not directly depend on the intervals intermediate values.
+		 
+		 
+		 \item 
+		 \[
+		 K(\lambda) := \log \E e^{\lambda X}, \quad X \in \{a, b\}
+		 \]
+		 \[
+		 \implies K(0) = \log 1 = 0
+		 \]
+		 also in this case:
+		 \[
+		 K'(0)=\left.\frac{\mathbb{E}[X e^{\lambda X}]}{\mathbb{E}[e^{\lambda X}]}\right|_{\lambda=0}
+		 = \frac{\E X \cdot 1}{ \E 1 } = \E X
+		 \]
+		 
+		 and
+		 
+		 \[
+		 K'' (\lambda) = \frac{(\E X^2 e^{\lambda X})(\E e^{\lambda X}) - (\E X e^{\lambda X})^2 }{ (\E e^{\lambda X})^2 } 
+		 \]
+		 \[
+		  = \frac{ ( p a^2 e^{\lambda a} +  (1-p) b^2 e^{\lambda b}) (p e^{\lambda a} +  (1-p) e^{\lambda b}) - (p a e^{\lambda a} +  (1-p) b e^{\lambda b})^2 }{ (p e^{\lambda a} +  (1-p) e^{\lambda b})^2 }
+		 \]
+		 \[
+		 = \frac{ p(1-p) e^{\lambda (a+b)}(a^2 + b^2) - 2 p(1-p)ab e^{\lambda (a + b)} }{  (p e^{\lambda a} +  (1-p) e^{\lambda b})^2 }
+		 \]
+		 
+		 From \(\E X = 0\) we have \(pa + (1-p)b = 0 \implies p = \frac{b}{b-a} = b\). So:
+		 
+		 \[
+		 K'' (\lambda) = \frac{ -ab e^{\lambda (a+b)}(a^2 + b^2) + 2 a^2b^2 e^{\lambda (a + b)} }{  (b e^{\lambda a} +  -a e^{\lambda b})^2 }
+		 \]
+		 \[
+		 =  \frac{ -ab e^{\lambda (a+b)} \overbrace{((a^2 + b^2) -2ab)}^{ = (b-a)^2} }{  (b e^{\lambda a} +  -a e^{\lambda b})^2 }
+		  = \frac{-ab e^{\lambda (a+b) }}{  (b e^{\lambda a} +  -a e^{\lambda b})^2 } \leq \frac{1}{4}
+		 \]
+		, where the last inequality is from \(( A + B)^2 \leq 2 AB \).
+		 
+		 
+		 Now we see use Taylor's theorem with Lagrange form of the remainder:
+		 \[
+		 K(\lambda) = K(0) + \lambda K'(0) + \frac{\lambda^2}{2!}K''(\xi), \quad \forall \xi \in (0, \lambda) \text{ or } (\lambda, 0)
+		 \]
+	\[
+	\implies  K(\lambda) \leq \frac{\lambda^2}{8} \implies \E e^X \leq e^\frac{\lambda^2}{8}
+	\]
+	
+	Also from \(\E X = 0\) we know \(a \leq 0 \leq b\) so \(K''(\lambda) \geq 0\) and therefore \(K(0)\) is at a local minimum and we have a convexity here.
+	
+	\end{enumerate}
+\end{solution}
+
+
+
+
+\begin{exercise}
+	(Hoeffding inequality for bounded random variables)
+\end{exercise}
+
+\begin{solution}
+	
+	We have:
+	\[
+	\Prob( \sum_{i=1}^{N}( X_i - \E X_i) \geq t) = 
+		\Prob( e^{\lambda \sum_{i=1}^{N}( X_i - \E X_i) }\geq e^{\lambda t}) \leq e^{- \lambda t} \E e^{\lambda \sum_{i=1}^{N}( X_i - \E X_i)} 
+	\]
+	\[
+	=  e^{-\lambda t} \prod_{i=1}^{N} \E e^{\lambda( X_i - \E X_i)} 
+	\leq e^{-\lambda t} e^{\frac{ \lambda^2 \sum_{i=1}^{N} (b_i-a_i)^2}{8}} =  e^{\frac{ \lambda^2 \sum_{i=1}^{N} (b_i-a_i)^2}{8} -\lambda t} 
+	\]
+	
+	now we choose \(\lambda\) to minimize the bound:
+	\[
+	\frac{d}{d \lambda} \frac{ \lambda^2 \sum_{i=1}^{N} (b_i-a_i)^2}{8} -\lambda t = \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{4} \lambda - t \implies \lambda^* = \frac{4t}{\sum_{i=1}^{N} (b_i-a_i)^2}
+	\]
+	
+	\[
+	\implies \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{4} \lambda^* - t = 0 
+	\implies \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{4} (\lambda^*)^2 - t \lambda^* = 0
+	\]
+	\[
+	= \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{8} (\lambda^*)^2 + \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{8} (\lambda^*)^2 - t \lambda^*
+	\]
+	\[
+	\implies  \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{8} (\lambda^*)^2 - t \lambda^* =  - \frac{\sum_{i=1}^{N} (b_i-a_i)^2}{8} (\lambda^*)^2 = -\frac{2t^2}{ \sum_{i=1}^{N} (b_i-a_i)^2 }
+	\]
+	
+\end{solution}
+
+\begin{exercise}
+	(Chernoff inequality: left tails)
+\end{exercise}
+	
+	
+\begin{solution}
+	For \(\lambda \geq 0\) and \(0 < t \leq \mu\)
+	\[
+	\Prob(S_N \leq t) = \Prob(e^{-\lambda S_N}\geq e^{-\lambda t}) \leq e^{\lambda t} \E e^{-\lambda S_N}
+	\]
+	\[
+	= e^{\lambda t} \prod_{i=1}^{N} ( p_i e^{-\lambda} + (1-p_i)e^0 ) = 
+	 e^{\lambda t} \prod_{i=1}^{N} (1 + p_i (e^{-\lambda} - 1) )
+	\]
+	\[
+	\leq e^{\lambda t} \prod_{i=1}^{N} \exp(p_i (e^{-\lambda} - 1)) = e^{\lambda t} \exp( (e^{-\lambda} - 1) \sum_{i=1}^{N} p_i ) = 
+	e^{\lambda t} \exp( (e^{-\lambda} - 1) \mu )
+	\]
+	\[
+	= \exp( (e^{-\lambda} - 1) \mu + \lambda t )
+	\].
+	
+	Now we minimize \(K(\lambda) \coloneq  (e^{-\lambda} - 1) \mu + \lambda t \) over \(\lambda \geq 0\):
+	\[
+	K'(\lambda) =  -\mu e^{-\lambda} + t \implies \lambda^* = - \ln \frac{t}{\mu} \text{  which is non-negative by assumption } 0 < t \leq \mu
+	\]
+	\[
+	K(\lambda^*) = (\frac{t}{\mu} - 1 )\mu - \ln (\frac{t}{\mu})^t = t - \mu - \ln (\frac{t}{\mu})^t
+	\]
+	\[
+	\implies \Prob(S_N \leq t) \leq e^{-\mu} (\frac{e \mu}{t})^t
+	\]
+\end{solution}
+
+\begin{exercise}
+	(Reverse Chernoff)
+\end{exercise}
+
+\begin{solution}
+	\[
+	\Prob(S_N = t) = { N \choose t } (\frac{\mu}{N})^t (\frac{N-\mu}{N})^{N-t}
+	\]
+\end{solution}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	
+\end{exercise}
+
+\begin{exercise}
+	(Boosting randomized algorithms)
+\end{exercise}
+
+\begin{solution}
+	Take the correctness of the algorithm as the Bernoulli r.v. \(X \in \{0,1\}\) with \(\Prob(X=1)=\frac{1}{2} + \epsilon\). The correctness after running \(N\) times and taking majority vote is:
+	\[
+	\Prob(S_N \leq \frac{N}{2}) 
+	\quad \text{ while } \E S_N = \frac{N}{2} + N\epsilon
+	\]
+	\[
+	= \Prob(S_N - \E S \leq -N\epsilon ) \leq \exp( - \frac{2 N^2 \epsilon^2 }{ N } ) = \exp( - 2N\epsilon^2 )
+	\]
+	
+	We want 
+	\[
+	\exp( - 2N\epsilon^2 ) \leq \delta \iff N \geq \frac{1}{2\epsilon^2} \ln \frac{1}{\delta}  
+	\]
+ 	
+ 	
+\end{solution}
+
+\begin{exercise}
+
+(Absolute moments of the normal distribution)
+	
+\end{exercise}
+
+\begin{solution}
+	
+	\begin{enumerate}
+	\item 
+	\[
+	g \sim N(0,1)
+	\]
+	\[
+	\E \abs{g}^p = \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} \abs{x}^p e^{\frac{-x^2}{2}} \; dx = \frac{2}{\sqrt{2\pi}} \int_0^\infty x^p e^{\frac{-x^2}{2}}  \; dx
+	\]
+	we set \(t \coloneq x^2/2\), and so \( \frac{dt}{dx} = x \):
+	\[
+	= \frac{2}{\sqrt{2\pi}} \int_0^\infty x^{p-1} e^{\frac{-x^2}{2}}  \; dt =  \frac{2}{\sqrt{2\pi}} \int_0^\infty    2^{ \frac{p-1}{2}} ( \frac{x^2}{2} )^{\frac{p-1}{2}} e^{-t}  \; dt 
+	\]
+	\[
+	=  \frac{2^{ \frac{p+1}{2}}}{\sqrt{2\pi}} \int_0^\infty t^{\frac{p-1}{2}} e^{-t}  \; dt 
+	\]
+	\[
+	=  \frac{2^{ \frac{p+1}{2}}}{\sqrt{2\pi}} \Gamma(\frac{p+1}{2}) =  \frac{2^{ \frac{p}{2}}}{\sqrt{\pi}} \Gamma(\frac{p+1}{2}) 
+	\]
+	\item By Stirling's formula we have:
+	\[
+	 \Gamma(\frac{p-1}{2} + 1) \sim \sqrt{2\pi \frac{p-1}{2} } ( \frac{p-1}{2e} )^{\frac{p-1}{2}} (1 + o(1))
+	\]
+	\[
+	\implies \frac{2^{ \frac{p}{2}}}{\sqrt{\pi}} \Gamma(\frac{p+1}{2}) 
+	\sim \sqrt{2 \frac{(p-1)^p}{e^{p-1}} }(1 + o(1))
+	= 
+	\]
+	\[
+	(\E \abs{g}^p)^{1/p} \sim \sqrt{2 \frac{(p-1)}{e^{\frac{p-1}{p}}} }(1 + o(1))^{1/p}
+	\]
+	\[
+	 \sim  \sqrt{\frac{p}{e}}(1+o(1)) \quad \text{as } p \to \infty
+	\]
+	
+	\end{enumerate}
+	
+\end{solution}
+
+
+
+\begin{exercise}
+	(Subgaussian MGF requires zero mean)
+\end{exercise}
+
+\begin{solution}
+	\[
+	\E \exp( \lambda X) \leq \exp(K^2 \lambda^2)
+	\]
+	\[
+	\implies f(\lambda) \leq g(\lambda), \quad f(0) = g(0) = 1
+	\]
+	\[
+	\implies f'(0) \leq g'(0) \text{ while } f'(0) = \E X \text{ and } g'(0) = 0  
+	\]
+	\[
+	\implies \E X \leq 0
+	\]
+doing the same for \(-\lambda\) gives \(\E X \geq 0\).	
+
+\end{solution}
+
+\begin{exercise}
+	(Examples of subgaussian distributions)
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+		\item (Constant).
+		\[
+		\E e^{X^2/K^2} \leq 2 \implies \int_\mathcal{C} e^{c^2/K^2} f_X(x) \; dx \leq 2
+		\]
+		\[
+		\implies  e^{c^2/K^2} \leq 2 \implies K^2 \geq c^2 / \ln2
+		\]
+		
+		\item (Bounded). First we clarify: \(X\) is bounded a.s. means that \(\|X\|_\infty = \sup_x \{\Prob(X \leq x) = 1\} \) exists. Therefore:
+		\[
+		 \frac{X^2}{K^2} \leq  \frac{\|X\|_\infty^2}{K^2} \;\text{ a.s.}
+		\]
+		\[
+		\implies \E e^\frac{X^2}{K^2} \leq  e^\frac{\|X\|_\infty^2}{K^2}
+		\]
+		So for a \(K\) that \(e^\frac{\|X\|_\infty^2}{K^2} \leq 2\) we will definitely have \(\E e^\frac{X^2}{K^2} \leq 2\) and so \(\|X\|_{\subg} \leq K\). So we find this bound for such \(K\):
+		\[
+		e^\frac{\|X\|_\infty^2}{K^2} \leq 2 \implies K \geq \|X\|_\infty/\sqrt{\ln2}
+		\],
+		by taking \(K = \|X\|_\infty/\sqrt{\ln2}\) and that \(\|X\|_{\subg} \leq K\), we get \( \|X\|_{\subg} \leq \|X\|_\infty/\sqrt{\ln2} \)
+		
+		\item (Rademacher).
+		\[
+		\E e^{\frac{X^2}{K^2}} \leq 2 \implies e^{\frac{1}{K^2}} \leq 2
+		\]
+		\[
+		\implies K \geq \frac{1}{\sqrt{\ln 2}} \implies \|X\|_\subg = \frac{1}{\sqrt{\ln 2}}
+		\]
+		\item  (Normal) we have \(X \sim N(0, \sigma^2)\)
+		\[
+		\E e^{\frac{X^2}{K^2}} \leq 2 \implies \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ \frac{(2 - K^2)x^2}{2K^2} } \; dx \leq 2
+		\]
+		
+		Setting \( \frac{(2 - K^2)x^2}{2K^2} = -\frac{t^2}{2} \implies \frac{(K^2-2)}{K^2} x^2 = t^2 \implies dt = \sqrt{\frac{(K^2-2)}{K^2}} \; dx\), we get:
+		\[
+		  \sqrt\frac{K^2}{K^2-2} \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{ \frac{-t^2}{2} } \; dt \leq 2 \implies  \sqrt\frac{K^2}{K^2-2} \leq 2
+		\]
+		\[
+		3K^2-8 \geq 0 \implies K \geq \sqrt{8/3} \text{ or } K \leq -\sqrt{8/3}
+		\]
+		\item (Bernoulli) 
+		
+		\[
+		\E e^{X^2/K^2} = pe^{1/K^2} + 1-p \leq 2
+		\]
+		\[
+		\implies e^{1/K^2} \leq \frac{1}{p} + 1 \implies K^2 \geq \frac{1}{\sqrt{\ln( \frac{1}{p} + 1 )}}
+		\]
+		
+	\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+	(Examples of non-subgaussian distributions) Explain why the exponential, Poisson,
+	geometric, chi-squared, Gamma, Cauchy, and Pareto distributions are not subgaussian.
+\end{exercise}
+
+\begin{solution}
+	\begin{itemize}
+		\item (Exponential) For \(t \geq 0\):
+		\[
+		X \sim \text{Exp}(\lambda) \implies \E e^{tX} = \int_0^\infty e^{tx} \lambda e^{-\lambda x} \; dx
+		\], 
+		which diverges for \(t \geq \lambda\). Also there exists \(t \geq 1 \geq 0\):
+		\[
+		 \Prob(X \geq t) = e^{-\lambda t} \geq e^{-\lambda t^2}
+		\]
+		Actually it is interesting to see that for \(t\) near zero it does behave like (or lighter) than sub-Gaussian.
+		
+		\item 
+		(Poisson) For \(X \sim \text{Poisson}(\lambda)\), and using Stirling’s formula:
+		\[
+		\Prob(X \geq t) \geq \Prob(X = t) = e^{-\lambda} \frac{\lambda^t}{t!} 
+		= \frac{e^{-\lambda} }{\sqrt{2\pi t}} (\frac{e\lambda}{t})^t (1 + o(1)) \quad \text{as } t \to \infty
+ 		\],
+		so there is a \(t\) such that:
+		\[
+		\Prob(X \geq t) \geq C_1 t^{-\frac{1}{2} - t } \geq C_2 t^{-t} \geq C_3 e^{-t\ln t} \geq C_4 e^{-t^2} 
+		\]
+		
+		\item (Geometric) For \(X \sim \text{Geometric}(\lambda) \), we have:
+		\[
+		\Prob(X\geq t) = (1-\lambda)^{t-1} = e^{t\ln(1-\lambda)}
+		\]
+		
+		\item (Chi-squared)
+		
+	\end{itemize}
+\end{solution}
+
+
+\begin{exercise}
+	(Subgaussian characterization: MGF of \(X^2\))
+\end{exercise}
+
+\begin{solution}
+	\(\implies\): take \(K = \|X\|_\subg < \infty\), which exists. Then:
+	\[
+	\E e^{\lambda^2 X^2} = \E [(e^{ X^2 / K^2 })^{\lambda^2 K^2} ]
+	\]
+	now since \(\lambda^2K^2 \in [0,1]\), we have \( ( \cdot )^{\lambda^2K^2} \) is a concave function. So with Jensen's inequality we have:
+	\[
+	\leq (\E e^{X^2/K^2})^{\lambda^2 K^2} \leq 2^{\lambda^2K^2} \leq e^{\lambda^2 K^2}
+	\]
+	
+	\(\impliedby\): We take \(\lambda = 1/(2K)\) and get the result.
+	
+	
+\end{solution}
+
+\begin{exercise}
+(Subgaussian characterization: almost stochastic dominance)
+\end{exercise}
+
+\begin{solution}
+	\begin{enumerate}
+		\item 
+		First we assume \(X\) is sub-Gaussian. Then: 
+		\[
+		\Prob( |X| \geq t ) \leq 2 e^{-ct^2 / \|X\|_\subg^2}
+		\quad \text{and} \quad
+	   	\frac{4Kt}{t^2 + K^2}  \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2K^2}} \leq 2\Prob( K|g| \geq t) \;\; K > 0
+		\]
+		We can show that \(\frac{2Kt}{t^2 + K^2}  \leq 1\). We should solve the following for \(K>0\):
+		\[
+		 2 e^{-ct^2 / \|X\|_\subg^2}
+		\leq
+		\frac{4Kt}{t^2 + K^2}  \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2K^2}} 
+		\]
+		\[
+		\implies \exp \big( (\frac{1}{2K^2} - \frac{c}{\|X\|_\subg^2})t^2 \big) \leq \frac{1}{\sqrt{2\pi}}
+		\]
+	
+		\item 
+		
+		
+	\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+	(Subgaussian characterization: convex dominance)
+\end{exercise}
+
+\begin{exercise}
+	(Hoeffding inequality for bounded random variables)
+\end{exercise}
+\begin{solution}
+	\(X_i \in [a_i,b_i]\) and \(\E X_i = 0\). We get that \(\|X\|_\subg\)
 \end{solution}
 
 \end{document}
